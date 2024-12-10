@@ -32,6 +32,10 @@ sudo apt-get install -y python3 python3-pip
 ```
 pip3 install pika
 ```
+만약 error: externally-managed-environment 오류 시 아래 실행
+```
+sudo apt install python3-pika
+```
 
 3. **GitHub 저장소 클론**
 ```
@@ -45,7 +49,7 @@ cd messageQ
 
 1. **RabbitMQ 컨테이너 실행**
 ```
-docker run -d --name rabbitmq-server -p 5672:5672 -p 15672:15672 rabbitmq:management
+sudo docker run -d --name rabbitmq-server -p 5672:5672 -p 15672:15672 rabbitmq:management
 ```
 - **RabbitMQ 웹 인터페이스**: http://localhost:15672  
 - **ID / PW**: `guest / guest`
@@ -55,7 +59,7 @@ docker run -d --name rabbitmq-server -p 5672:5672 -p 15672:15672 rabbitmq:manage
   ```
   python3 consumer.py
   ```
-- **Producer 실행**: 
+- **Producer 실행**: 다른 터미널 창들로 실행
   ```
   #n에는 0-99 숫자를 입력하여 각 producer마다 개인 번호 부여
   python3 producer.py n
